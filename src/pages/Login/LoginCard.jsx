@@ -24,7 +24,7 @@ export default function LoginCard() {
             setError(error)
         }
 
-        if (data.session) {navigate('/feed')}
+        if (data.session) {navigate('/home')}
     }
 
     loginUser()

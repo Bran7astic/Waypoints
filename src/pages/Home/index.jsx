@@ -5,7 +5,7 @@ import { supabase } from "../../client";
 import useAuthRedirect from "../../hooks/useAuthRedirect";
 
 
-export default function Feed() {
+export default function Home() {
 
     // const { user } = useContext(AuthContext)
     // const navigate = useNavigate()
@@ -19,21 +19,10 @@ export default function Feed() {
 
     useAuthRedirect("/")
 
-    const handleLogout = () => {
-        const logout = async() => {
-            const { error } = await supabase.auth.signOut()
-
-            if (error) console.log(error);
-
-        }
-
-        logout()
-    }
 
     return(
         <div>
-            <h1>Feed</h1>
-            <button onClick={handleLogout}>Logout</button>
+            <h1>Waypoints</h1>
         </div>
         
     );

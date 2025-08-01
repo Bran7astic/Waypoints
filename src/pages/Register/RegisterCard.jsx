@@ -1,12 +1,15 @@
 import "@/styles/Auth.css";
 import { supabase } from "../../client";
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { Link, useAsyncError, useNavigate } from "react-router-dom";
+import AuthContext from "../../contexts/AuthContext";
 
 export default function RegisterCard() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { session } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleSubmit = () => {
     const registerUser = async () => {
@@ -14,18 +17,39 @@ export default function RegisterCard() {
         email: email,
         password: password,
         options: {
-            emailRedirectTo: `${window.location.origin}/feed`
-        }
+          emailRedirectTo: `${window.location.origin}/home`,
+        },
       });
 
-    //   console.log("Data:", data);
-    //   console.log("Error:", error);
-    //   console.log("User ID:", data?.user?.id);
+      if (error) {console.error(error)}
 
+      //   console.log("Data:", data);
+      //   console.log("Error:", error);
+      //   console.log("User ID:", data?.user?.id);
     };
 
     registerUser();
   };
+
+  useEffect(() => {
+    const addUser = async () => {
+      const { error } = await supabase
+        .from("Profiles")
+        .insert({ username: username, user_id: session?.user.id });
+
+      if (error) {
+        console.error(error);
+      }
+
+      console.log("Inserted")
+
+    };
+
+    if (session) {
+      navigate("/home");
+      addUser();
+    }
+  }, [session]);
 
   return (
     <div className="authCard">
@@ -47,10 +71,8 @@ export default function RegisterCard() {
 
       <button onClick={handleSubmit}>Submit</button>
       <p>
-        Already have an account? <br/>
-        <Link to="/login">
-            Log In
-        </Link>
+        Already have an account? <br />
+        <Link to="/login">Log In</Link>
       </p>
     </div>
   );

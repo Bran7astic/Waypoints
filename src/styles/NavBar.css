@@ -1,0 +1,32 @@
+.navBar{
+    width: 100%;
+    height: 7%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #885A5A;
+    padding-block: 12px;
+    color: white;
+    gap: 2em;
+}
+
+a {
+    color: rgb(255, 255, 255);
+    transition: transform 0.3s;
+}
+
+a:hover {
+    transform: scale(1.05);
+    color: white;
+}
+
+input {
+    width: 50%;
+}
+
+.logoutButton {
+    margin-left: auto;
+}

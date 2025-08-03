@@ -86,7 +86,7 @@ export default function PostForm({editable = false, post=null}) {
     const deleteImg = async () => {
       const { data, error } = await supabase.storage
         .from("images")
-        .remove([`post-images/${image.name}`]);
+        .remove([`post-images/${fileName}`]);
 
       error ? console.log(error) : console.log("Delete Data:", data);
 
@@ -162,6 +162,25 @@ export default function PostForm({editable = false, post=null}) {
 
   }
 
+  const handleDeletePost = () => {
+
+    const deletePost = async() => {
+      if (post) {
+        const response = await supabase
+          .from('Posts')
+          .delete()
+          .eq('post_id', post.post_id)
+
+        console.log(response)
+
+      }
+    }
+
+    deletePost()
+    navigate('/home')
+
+  }
+
   return (
     <div className="postForm">
       <div
@@ -178,8 +197,8 @@ export default function PostForm({editable = false, post=null}) {
         />
 
         {url ? (
-          <div>
-            <img src={url} />
+          <div className="previewContainer">
+            <img className="imgPreview" src={url} />
           </div>
         ) : loading ? (
           <CircularProgress color="#81A094" />
@@ -212,7 +231,10 @@ export default function PostForm({editable = false, post=null}) {
       />
       
       {editable ? (
-        <button onClick={handleUpdate}>Update</button>
+        <div style={{display: "flex", gap: "2em"}}>
+          <button onClick={handleUpdate}>Update</button>
+          <button style={{backgroundColor: "#db8181"}} onClick={handleDeletePost}>Delete</button>
+        </div>
       ) : (
         <button onClick={handleSubmit}>Submit</button>
       )}

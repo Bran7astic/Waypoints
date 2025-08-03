@@ -50,7 +50,7 @@ textarea::-webkit-scrollbar-thumb {
     border-radius: 20px;
 }
 
-img {
+.imgPreview {
     width: 100%;
     border-radius: 20px;
 }

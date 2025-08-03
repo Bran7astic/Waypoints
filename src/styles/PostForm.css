@@ -18,14 +18,13 @@
     justify-content: center;
     border-radius: 20px;
     width: 30%;
-    height: 30%;
     padding: 20px;
     cursor: pointer;
 }
 
 textarea {
     width: 60%;
-    height: 30%;
+    height: 10em;
     resize: none;
     border-radius: 20px;
     padding: 20px;
@@ -34,6 +33,21 @@ textarea {
     background-color: #fff5f5;
     border: 3px solid #885A5A;
     color: #4d3333;
+    overflow: auto;
+}
+
+textarea::-webkit-scrollbar {
+    width: 10px;
+}
+
+textarea::-webkit-scrollbar-track {
+    padding-right: 8px;
+}
+
+textarea::-webkit-scrollbar-thumb {
+    background-color: #885A5A;
+    width: 5px;
+    border-radius: 20px;
 }
 
 img {

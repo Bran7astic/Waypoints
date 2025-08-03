@@ -7,7 +7,7 @@ import UserContext from "../../contexts/UserContext";
 
 export default function NavBar() {
 
-  const { username } = useContext(UserContext)
+  const { username, uid } = useContext(UserContext)
 
 
   const handleLogout = () => {
@@ -29,17 +29,19 @@ export default function NavBar() {
         </Link>
       </div>
 
-      <div style={{ backgroundColor: "green", width: "30%" }}>
+      {/* <div style={{ backgroundColor: "green", width: "30%" }}>
         <input />
-      </div>
+      </div> */}
 
       <div style={{ backgroundColor: "blue", width: "30%", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <Link to="/home/post">
           <h3>Post</h3>
         </Link>
-        <h3>
-          {username}
-        </h3>
+
+        <Link to={`/home/profile/${uid}`}>
+          <h3>{username}</h3>
+        </Link>
+
         <button className="logoutButton" onClick={handleLogout}>
           Logout
         </button>

@@ -1,5 +1,9 @@
 .postCard {
     width: 26%;
+    height: 32em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     border: 3px solid #885A5A;
     background-color: #ffdcdc;
     padding: 30px;
@@ -9,9 +13,4 @@
 
 .postCard:hover {
     transform: scale(1.05);
-}
-
-img {
-    cursor: pointer;
-    object-fit: contain;
 }

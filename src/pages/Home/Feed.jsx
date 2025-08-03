@@ -27,10 +27,10 @@ export default function Feed() {
   return (
     <div>
       <div className="feedContainer">
-        {posts ? (
+        {posts.length>0 ? (
           posts.map((item) => <PostCard key={item.post_id} {...item} />)
         ) : (
-          <CircularProgress/>
+          <CircularProgress color="#81A094"/>
         )}
       </div>
     </div>

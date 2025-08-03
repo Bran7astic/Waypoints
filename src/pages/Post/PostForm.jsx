@@ -12,18 +12,19 @@ import {
 import UserContext from "../../contexts/UserContext";
 import { useNavigate } from "react-router-dom";
 
-export default function PostForm() {
+export default function PostForm({editable = false, post=null}) {
 
   const navigate = useNavigate()
   const {uid} = useContext(UserContext)
 
   const uploadRef = useRef();
   const [image, setImage] = useState(null);
+  const [fileName, setFileName] = useState(editable ? post.file_name : "")
   const [loading, setLoading] = useState(null);
-  const [url, setUrl] = useState("");
-  const [caption, setCaption] = useState("");
-  const [location, setLocation] = useState("");
-  const [coordinates, setCoordinates] = useState([])
+  const [url, setUrl] = useState(editable ? post.imageUrl : "");
+  const [caption, setCaption] = useState(editable ? post.caption.replace(/[\r\n]+/g, " ") : "");
+  const [location, setLocation] = useState(editable ? post.location : "");
+  const [coordinates, setCoordinates] = useState(editable ? post.coordinates : [])
 
   const handleClick = () => {
     uploadRef.current.click();
@@ -53,6 +54,7 @@ export default function PostForm() {
     };
 
     if (image) {
+      setFileName(image.name)
       uploadImage();
     }
   }, [image]);
@@ -121,7 +123,7 @@ export default function PostForm() {
           caption: caption,
           location: location,
           imageUrl: url,
-          file_name: image.name,
+          file_name: fileName,
           coordinates: coordinates
         })
 
@@ -132,6 +134,34 @@ export default function PostForm() {
 
     createPost()
   }
+
+  const handleUpdate = () => {
+
+    const updatePost = async() => {
+      if (post) {
+
+        const {data, error} = await supabase
+        .from('Posts')
+        .update({
+          caption: caption,
+          location: location,
+          imageUrl: url,
+          file_name: fileName,
+          coordinates: coordinates
+        })
+        .eq('post_id', post.post_id)
+        .select()
+
+        error ? console.error(error) : console.log("Update Data:", data)
+
+      }
+    }
+
+    updatePost()
+    navigate("/home")
+
+  }
+
   return (
     <div className="postForm">
       <div
@@ -180,8 +210,12 @@ export default function PostForm() {
           },
         }}
       />
-
-      <button onClick={handleSubmit}>Submit</button>
+      
+      {editable ? (
+        <button onClick={handleUpdate}>Update</button>
+      ) : (
+        <button onClick={handleSubmit}>Submit</button>
+      )}
     </div>
   );
 }

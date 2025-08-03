@@ -7,6 +7,8 @@ import Layout from './pages/Layout'
 import Post from './pages/Post'
 import ConfirmEmail from './pages/Register/ConfirmEmail'
 import PostDetails from './pages/PostDetails'
+import Profile from './pages/Profile'
+import Edit from './pages/Edit'
 
 function App() {
 
@@ -19,7 +21,9 @@ function App() {
         <Route path="/home" element={<Layout/>}>
           <Route index element={<Home/>} />
           <Route path="post" element={<Post/>} />
-          <Route path=":id" element={<PostDetails/>} />
+          <Route path=":post_id" element={<PostDetails/>} />
+          <Route path="profile/:user_id" element={<Profile/>} />
+          <Route path="edit/:post_id" element={<Edit/>} />
         </Route>
       </Routes>
     </BrowserRouter>

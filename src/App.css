@@ -4,3 +4,8 @@
   padding: 2rem;
   text-align: center;
 }
+
+input {
+  border: 3px solid "#885A5A";
+  background-color: #fff5f5;
+}

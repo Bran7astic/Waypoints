@@ -72,7 +72,7 @@ export default function RegisterCard() {
       <button onClick={handleSubmit}>Submit</button>
       <p>
         Already have an account? <br />
-        <Link to="/login">Log In</Link>
+        <Link className="loginLink" to="/login">Log In</Link>
       </p>
     </div>
   );

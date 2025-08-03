@@ -4,14 +4,21 @@
     justify-content: center;
     align-items: center;
     width: 20em;
-    border: 1px solid rgb(177, 177, 177);
     border-radius: 20px;
     gap: 1em;
     padding-block: 20px;
+    background-color: #ffdcdc;
+    border: 3px solid #885A5A;
+    color: #4d3333;
 }
 
 input{
     border-radius: 20px;
     padding: 10px;
-    width: 80%
+    width: 80%;
+    color: #4d3333;
+}
+
+.loginLink {
+    color: #81A094;
 }

@@ -3,6 +3,7 @@ import AuthContext from "../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../../client";
 import useAuthRedirect from "../../hooks/useAuthRedirect";
+import Feed from "./Feed";
 
 
 export default function Home() {
@@ -23,6 +24,7 @@ export default function Home() {
     return(
         <div>
             <h1>Waypoints</h1>
+            <Feed/>
         </div>
         
     );

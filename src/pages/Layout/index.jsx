@@ -5,7 +5,9 @@ export default function Layout() {
     return(
         <div>
             <NavBar/>
-            <Outlet/>
+            <div style={{marginTop: "7%"}}>
+                <Outlet/>
+            </div>
         </div>
     );
 }

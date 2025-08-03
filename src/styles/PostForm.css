@@ -29,9 +29,20 @@ textarea {
     resize: none;
     border-radius: 20px;
     padding: 20px;
-    font-size: large;
     font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-size: large;
     background-color: #fff5f5;
     border: 3px solid #885A5A;
     color: #4d3333;
+}
+
+img {
+    width: 100%;
+    border-radius: 20px;
+}
+
+input {
+    border: 3px solid #885A5A;
+    width: 60%;
+    padding-inline: 20px;
 }

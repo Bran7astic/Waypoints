@@ -1,0 +1,17 @@
+.postCard {
+    width: 26%;
+    border: 3px solid #885A5A;
+    background-color: #ffdcdc;
+    padding: 30px;
+    border-radius: 20px;
+    transition: transform 0.3s
+}
+
+.postCard:hover {
+    transform: scale(1.05);
+}
+
+img {
+    cursor: pointer;
+    object-fit: contain;
+}

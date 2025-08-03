@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import Layout from './pages/Layout'
 import Post from './pages/Post'
 import ConfirmEmail from './pages/Register/ConfirmEmail'
+import PostDetails from './pages/PostDetails'
 
 function App() {
 
@@ -17,8 +18,9 @@ function App() {
         <Route path="/login" element={<Login/>} />
         <Route path="/home" element={<Layout/>}>
           <Route index element={<Home/>} />
+          <Route path="post" element={<Post/>} />
+          <Route path=":id" element={<PostDetails/>} />
         </Route>
-        <Route path="/post" element={<Post/>} />
       </Routes>
     </BrowserRouter>
   )

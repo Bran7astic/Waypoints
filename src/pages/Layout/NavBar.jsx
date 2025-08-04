@@ -4,48 +4,37 @@ import { supabase } from "../../client";
 import { useContext } from "react";
 import AuthContext from "../../contexts/AuthContext";
 import UserContext from "../../contexts/UserContext";
+import LogoutButton from "../../components/LogoutButton";
 
 export default function NavBar() {
-
-  const { username, uid } = useContext(UserContext)
-
-
-  const handleLogout = () => {
-    const logout = async () => {
-      const { error } = await supabase.auth.signOut();
-
-      if (error) console.log(error);
-    };
-
-    logout();
-  };
+  const { username, uid } = useContext(UserContext);
 
   return (
     <div className="navBar">
+      <>
+        <div
+          style={{
+            display: "flex",
+            width: "80%",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "10em",
+          }}
+        >
+          <Link to="/home/post">
+            <h3>Post</h3>
+          </Link>
 
-      <div style={{ backgroundColor: "red", width: "30%" }}>
-        <Link to="/home">
-          <h2>Waypoints</h2>
-        </Link>
-      </div>
+          <Link to="/home">
+            <h2>Waypoints</h2>
+          </Link>
 
-      {/* <div style={{ backgroundColor: "green", width: "30%" }}>
-        <input />
-      </div> */}
-
-      <div style={{ backgroundColor: "blue", width: "30%", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <Link to="/home/post">
-          <h3>Post</h3>
-        </Link>
-
-        <Link to={`/home/profile/${uid}`}>
-          <h3>{username}</h3>
-        </Link>
-
-        <button className="logoutButton" onClick={handleLogout}>
-          Logout
-        </button>
-      </div>
+          <Link to={`/home/profile/${uid}`}>
+            <h3>{username}</h3>
+          </Link>
+        </div>
+          {/* <LogoutButton /> */}
+      </>
     </div>
   );
 }

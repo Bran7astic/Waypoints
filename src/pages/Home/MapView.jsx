@@ -25,7 +25,7 @@ export default function MapView({posts}) {
             el.style.width = '60px';
             el.style.height = '60px';
             el.style.borderRadius = '50%';
-            el.style.border = '2px solid';
+            el.style.border = '3px solid #81A094';
             el.style.backgroundSize = 'cover';
             el.style.backgroundImage = `url(${item.imageUrl})`
             el.style.transition = 'transition transform 0.3s'

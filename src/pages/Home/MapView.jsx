@@ -68,7 +68,7 @@ export default function MapView({posts}) {
         backgroundColor: "#ffdcdc",
       }}
     >
-        <Fade direction="up">
+        <Fade direction="up" triggerOnce>
 
       <h2>Map View</h2>
 

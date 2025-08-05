@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import mapboxgl from "mapbox-gl";
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { MAPBOX_TOKEN } from "../../client";
+import { Fade } from "react-awesome-reveal";
 
 export default function MapView({posts}) {
   const mapContainerRef = useRef();
@@ -67,24 +68,27 @@ export default function MapView({posts}) {
         backgroundColor: "#ffdcdc",
       }}
     >
+        <Fade direction="up">
+
       <h2>Map View</h2>
 
       <div
         style={{
-          width: "60em",
-          height: "40em",
-          borderRadius: "20px",
-          overflow: "hidden",
-          position: "relative",
-          border: "3px solid #885A5A",
+            width: "60em",
+            height: "40em",
+            borderRadius: "20px",
+            overflow: "hidden",
+            position: "relative",
+            border: "3px solid #885A5A",
         }}
-      >
+        >
         <div
           style={{ width: "100%", height: "100%" }}
           ref={mapContainerRef}
           className="map-container"
         />
       </div>
+          </Fade>
     </div>
   );
 }

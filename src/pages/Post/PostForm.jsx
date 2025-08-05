@@ -1,5 +1,10 @@
 import "@/styles/PostForm.css";
-import { AddLocationAlt, AddPhotoAlternate, Delete, Widgets } from "@mui/icons-material";
+import {
+  AddLocationAlt,
+  AddPhotoAlternate,
+  Delete,
+  Widgets,
+} from "@mui/icons-material";
 import { useContext, useEffect, useRef, useState } from "react";
 import { MAPBOX_TOKEN, supabase } from "../../client";
 import { CircularProgress } from "@mui/material";
@@ -12,19 +17,22 @@ import {
 import UserContext from "../../contexts/UserContext";
 import { useNavigate } from "react-router-dom";
 
-export default function PostForm({editable = false, post=null}) {
-
-  const navigate = useNavigate()
-  const {uid, username} = useContext(UserContext)
+export default function PostForm({ editable = false, post = null }) {
+  const navigate = useNavigate();
+  const { uid, username } = useContext(UserContext);
 
   const uploadRef = useRef();
   const [image, setImage] = useState(null);
-  const [fileName, setFileName] = useState(editable ? post.file_name : "")
+  const [fileName, setFileName] = useState(editable ? post.file_name : "");
   const [loading, setLoading] = useState(null);
   const [url, setUrl] = useState(editable ? post.imageUrl : "");
-  const [caption, setCaption] = useState(editable ? post.caption.replace(/[\r\n]+/g, " ") : "");
+  const [caption, setCaption] = useState(
+    editable ? post.caption.replace(/[\r\n]+/g, " ") : ""
+  );
   const [location, setLocation] = useState(editable ? post.location : "");
-  const [coordinates, setCoordinates] = useState(editable ? post.coordinates : [])
+  const [coordinates, setCoordinates] = useState(
+    editable ? post.coordinates : []
+  );
 
   const handleClick = () => {
     uploadRef.current.click();
@@ -54,7 +62,7 @@ export default function PostForm({editable = false, post=null}) {
     };
 
     if (image) {
-      setFileName(image.name)
+      setFileName(image.name);
       uploadImage();
     }
   }, [image]);
@@ -97,99 +105,94 @@ export default function PostForm({editable = false, post=null}) {
   };
 
   useEffect(() => {
-    console.log("Image:", image)
-  }, [image])
+    console.log("Image:", image);
+  }, [image]);
 
   const handleRetrieve = (e) => {
-    console.log(e)
+    console.log(e);
 
-    setLocation(e.features[0].properties.name)
+    setLocation(e.features[0].properties.name);
 
     // console.log(e.features[0].properties.coordinates.latitude)
-    const latitude = e.features[0].properties.coordinates.latitude
+    const latitude = e.features[0].properties.coordinates.latitude;
     // console.log(e.features[0].properties.coordinates.longitude)
-    const longitude = e.features[0].properties.coordinates.longitude
+    const longitude = e.features[0].properties.coordinates.longitude;
 
-    setCoordinates([latitude, longitude])
-
-  }
+    setCoordinates([latitude, longitude]);
+  };
 
   const handleSubmit = () => {
     const createPost = async () => {
-      const {data, error} = await supabase
-        .from('Posts')
-        .insert({ 
-          user_id: uid,
-          caption: caption,
-          location: location,
-          imageUrl: url,
-          file_name: fileName,
-          coordinates: coordinates,
-          username: username
-        })
+      const { data, error } = await supabase.from("Posts").insert({
+        user_id: uid,
+        caption: caption,
+        location: location,
+        imageUrl: url,
+        file_name: fileName,
+        coordinates: coordinates,
+        username: username,
+      });
 
-        error? console.error(error) : console.log("Create Post Data:", data)
-        navigate('/home')
-        
-    }
+      error ? console.error(error) : console.log("Create Post Data:", data);
+      navigate("/home");
+    };
 
-    createPost()
-  }
+    createPost();
+  };
 
   const handleUpdate = () => {
-
-    const updatePost = async() => {
+    const updatePost = async () => {
       if (post) {
+        const { data, error } = await supabase
+          .from("Posts")
+          .update({
+            caption: caption,
+            location: location,
+            imageUrl: url,
+            file_name: fileName,
+            coordinates: coordinates,
+          })
+          .eq("post_id", post.post_id)
+          .select();
 
-        const {data, error} = await supabase
-        .from('Posts')
-        .update({
-          caption: caption,
-          location: location,
-          imageUrl: url,
-          file_name: fileName,
-          coordinates: coordinates
-        })
-        .eq('post_id', post.post_id)
-        .select()
-
-        error ? console.error(error) : console.log("Update Data:", data)
-
+        error ? console.error(error) : console.log("Update Data:", data);
       }
-    }
+    };
 
-    updatePost()
-    navigate("/home")
-
-  }
+    updatePost();
+    navigate("/home");
+  };
 
   const handleDeletePost = () => {
-
-    const deletePost = async() => {
+    const deletePost = async () => {
       if (post) {
         const response = await supabase
-          .from('Posts')
+          .from("Posts")
           .delete()
-          .eq('post_id', post.post_id)
+          .eq("post_id", post.post_id);
 
-        console.log(response)
-
-
-
+        console.log(response);
       }
-    }
+    };
 
-    deletePost()
-    navigate('/home')
-
-  }
+    deletePost();
+    navigate("/home");
+  };
 
   return (
     <div className="postForm">
       <div
         className="uploadBox"
         onClick={handleClick}
-        style={{ border: url ? "none" : "3px dashed #885A5A", display: "flex", flexDirection: "column", gap: "3em" }}
+        style={{
+          border: url ? "none" : "3px dashed #885A5A",
+          display: "flex",
+          flexDirection: "column",
+          gap: "3em",
+          height: url? "" : "10em",
+          width: url? "" : "10em",
+          marginTop: '10px'
+        }}
       >
         <input
           ref={uploadRef}
@@ -209,7 +212,12 @@ export default function PostForm({editable = false, post=null}) {
           <AddPhotoAlternate fontSize="large" />
         )}
       </div>
-        {url && <Delete onClick={handleDelete} style={{ marginTop: "-1.5em", cursor: "pointer" }} />}
+      {url && (
+        <Delete
+          onClick={handleDelete}
+          style={{ marginTop: "-1.5em", cursor: "pointer" }}
+        />
+      )}
       <textarea
         value={caption}
         placeholder="Caption"
@@ -219,7 +227,7 @@ export default function PostForm({editable = false, post=null}) {
       <SearchBox
         accessToken={MAPBOX_TOKEN}
         value={location}
-        onChange={e => setLocation(e)}
+        onChange={(e) => setLocation(e)}
         onRetrieve={handleRetrieve}
         theme={{
           variables: {
@@ -232,11 +240,16 @@ export default function PostForm({editable = false, post=null}) {
           },
         }}
       />
-      
+
       {editable ? (
-        <div style={{display: "flex", gap: "2em"}}>
+        <div style={{ display: "flex", gap: "2em" }}>
           <button onClick={handleUpdate}>Update</button>
-          <button style={{backgroundColor: "#db8181"}} onClick={handleDeletePost}>Delete</button>
+          <button
+            style={{ backgroundColor: "#db8181" }}
+            onClick={handleDeletePost}
+          >
+            Delete
+          </button>
         </div>
       ) : (
         <button onClick={handleSubmit}>Submit</button>

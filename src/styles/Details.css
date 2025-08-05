@@ -1,13 +1,13 @@
 .detailsContainer{
     margin: 0 auto;
     display: flex;
+    width: 70em;
     height: 95vh;
     align-items: center;
     justify-content: center;
     border: 4px solid #885A5A;
     background-color: #ffdcdc;;
     border-radius: 40px;
-    padding: 5%;
 }
 
 .details {
@@ -60,6 +60,7 @@
 .commentBox{
     width: 70%;
     height: 15%;
+    padding-right: 2em;
     position: absolute;
     bottom: 0;
 }

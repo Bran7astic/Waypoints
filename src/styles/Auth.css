@@ -6,7 +6,8 @@
     width: 20em;
     border-radius: 20px;
     gap: 1em;
-    padding-block: 20px;
+    padding: 20px;
+    padding-top: 20px;
     background-color: #ffdcdc;
     border: 3px solid #885A5A;
     color: #4d3333;

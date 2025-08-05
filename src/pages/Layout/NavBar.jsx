@@ -21,15 +21,15 @@ export default function NavBar() {
             gap: "10em",
           }}
         >
-          <Link to="/home/post">
+          <Link className="navLink" to="/home/post">
             <h3>Post</h3>
           </Link>
 
-          <Link to="/home">
+          <Link className="navLink" to="/home">
             <h2>Waypoints</h2>
           </Link>
 
-          <Link to={`/home/profile/${uid}`}>
+          <Link className="navLink" to={`/home/profile/${uid}`}>
             <h3>{username}</h3>
           </Link>
         </div>

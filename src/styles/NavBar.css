@@ -14,21 +14,16 @@
     gap: 2em;
 }
 
-a {
+.navLink {
     color: rgb(255, 255, 255);
     transition: transform 0.3s;
 }
 
-a:hover {
+.navLink:hover {
     transform: scale(1.05);
     color: white;
 }
 
 input {
     width: 50%;
-}
-
-.logoutButton {
-    position: absolute;
-    right: 0
 }

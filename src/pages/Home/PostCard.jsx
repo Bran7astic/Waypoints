@@ -17,11 +17,11 @@ export default function PostCard({
   imageUrl,
   location,
   likes,
+  username
 }) {
   const navigate = useNavigate();
   const [liked, setLiked] = useState(false);
   const [likesState, setLikesState] = useState(likes);
-  const { username } = useContext(UserContext)
 
   useEffect(() => {
     getDate();
@@ -32,15 +32,6 @@ export default function PostCard({
     return date.toLocaleDateString();
   };
 
-  const handleLike = () => {
-    setLiked(true);
-    setLikesState((prev) => prev + 1);
-  };
-
-  const handleUnlike = () => {
-    setLiked(false);
-    setLikesState((prev) => prev - 1);
-  };
 
   useEffect(() => {
     const updateLikes = async () => {
@@ -49,7 +40,7 @@ export default function PostCard({
         .update({ likes: likesState })
         .eq("post_id", post_id);
 
-      error ? console.error(error) : console.log(data);
+      error && console.error(error)
     };
 
     updateLikes();
@@ -114,11 +105,7 @@ export default function PostCard({
         </div>
 
         <div style={{ display: "flex", alignItems: "center", gap: "0.2em" }}>
-          {liked ? (
-            <Favorite />
-          ) : (
-            <FavoriteBorder />
-          )}
+          <Favorite onClick={() => setLikesState(prev => prev+1)}/>
           <p>{likesState}</p>
         </div>
       </div>

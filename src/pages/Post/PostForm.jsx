@@ -15,7 +15,7 @@ import { useNavigate } from "react-router-dom";
 export default function PostForm({editable = false, post=null}) {
 
   const navigate = useNavigate()
-  const {uid} = useContext(UserContext)
+  const {uid, username} = useContext(UserContext)
 
   const uploadRef = useRef();
   const [image, setImage] = useState(null);
@@ -124,7 +124,8 @@ export default function PostForm({editable = false, post=null}) {
           location: location,
           imageUrl: url,
           file_name: fileName,
-          coordinates: coordinates
+          coordinates: coordinates,
+          username: username
         })
 
         error? console.error(error) : console.log("Create Post Data:", data)
@@ -173,7 +174,7 @@ export default function PostForm({editable = false, post=null}) {
 
         console.log(response)
 
-        
+
 
       }
     }

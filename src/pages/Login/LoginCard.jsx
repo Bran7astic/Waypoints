@@ -34,13 +34,13 @@ export default function LoginCard() {
   return (
     <div className="authCard">
       <input
-        style={{borderColor: error ? "red" : "black"}}
+        style={{borderColor: error && "#db8181"}}
         placeholder="Email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
       <input
-        style={{borderColor: error ? "red" : "black"}}
+        style={{borderColor: error && "#db8181"}}
         type="password"
         placeholder="Password"
         value={password}
@@ -48,7 +48,7 @@ export default function LoginCard() {
       />
     
       {error && (
-        <p style={{color: "red", lineHeight: "0.2"}}>Invalid Credentials</p>
+        <p style={{color: "#db8181", lineHeight: "0.2"}}>Invalid Credentials</p>
       )}
       <button onClick={handleSubmit}>Submit</button>
     </div>

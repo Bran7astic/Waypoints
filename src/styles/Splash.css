@@ -1,0 +1,12 @@
+.splash {
+    display: flex;
+    flex-direction: column;
+    width: 40em;
+    border-radius: 20px;
+    padding: 3em;
+    align-items: center;
+    justify-content: center;
+    border: 4px solid #885A5A;
+    background-color: #ffdcdc;
+}
+

@@ -14,6 +14,7 @@ import {
 import AuthContext from "../../contexts/AuthContext";
 import EditIcon from "../../components/EditIcon";
 import { CircularProgress } from "@mui/material";
+import { Fade } from "react-awesome-reveal";
 
 export default function PostDetails() {
   const post_id = useParams().post_id;
@@ -75,8 +76,8 @@ export default function PostDetails() {
   return (
     <>
       {details ? (
-        <div className="detailsContainer">
-          <>
+        <Fade direction="up" triggerOnce>
+          <div className="detailsContainer">
             <div className="details">
               <div
                 style={{
@@ -148,8 +149,8 @@ export default function PostDetails() {
                 }}
               />
             </div>
-          </>
-        </div>
+          </div>
+        </Fade>
       ) : (
         <CircularProgress color="#81A094" />
       )}

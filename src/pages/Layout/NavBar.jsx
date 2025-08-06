@@ -11,30 +11,25 @@ export default function NavBar() {
 
   return (
     <div className="navBar">
-      <>
-        <div
-          style={{
-            display: "flex",
-            width: "80%",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "10em",
-          }}
-        >
-          <Link className="navLink" to="/home/post">
-            <h3>Post</h3>
-          </Link>
 
-          <Link className="navLink" to="/home">
-            <h2>Waypoints</h2>
-          </Link>
+      <div style={{width: "10%"}}> 
+      <Link className="navLink" to="/home/post">
+        <h3>Post</h3>
+      </Link>
+      </div>
 
-          <Link className="navLink" to={`/home/profile/${uid}`}>
-            <h3>{username}</h3>
-          </Link>
-        </div>
-          {/* <LogoutButton /> */}
-      </>
+     <div style={{width: "10%"}}>
+      <Link className="navLink" to="/home">
+        <h2>Waypoints</h2>
+      </Link>
+     </div>
+
+     <div style={{width: "10%"}}>
+      <Link className="navLink" to={`/home/profile/${username}`}>
+        <h3>{username}</h3>
+      </Link>
+           </div>
+
     </div>
   );
 }

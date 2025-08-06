@@ -1,8 +1,8 @@
-# Web Development Final Project - *Name of App Here*
+# Web Development Final Project - *Waypoints*
 
-Submitted by: **Waypoints**
+Submitted by: **Brandon Budhan**
 
-This web app: **insert description**
+This web app: **Waypoints is an image sharing platform where users must tag where they took each photo they post. All the best scenery, vacation, and hangout spots consolidated into one feed. No gatekeeping allowed!**
 
 Time spent: **30** hours spent in total
 

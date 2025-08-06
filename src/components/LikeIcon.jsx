@@ -7,7 +7,7 @@ export default function LikeIcon({post_id}) {
     const [liked, setLiked] = useState(false)
     const [likeState, setLikeState] = useState("")
     
-    const [uid] = useContext(UserContext)
+    const {uid} = useContext(UserContext)
 
 
     const handleLike = () => {
@@ -18,8 +18,10 @@ export default function LikeIcon({post_id}) {
             const{data, error} = await supabase
                 .from('Likes')
                 .insert({
-
+                    user_id: uid,
+                    post_id: post_id
                 })
+            
         }
     };
 

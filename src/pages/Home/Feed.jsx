@@ -5,6 +5,7 @@ import "@/styles/Feed.css";
 import { CircularProgress } from "@mui/material";
 import PostView from "./PostView";
 import MapView from "./MapView";
+import { AttentionSeeker } from "react-awesome-reveal";
 
 export default function Feed() {
   const [posts, setPosts] = useState([]);
@@ -63,16 +64,19 @@ export default function Feed() {
           Posts View
         </h3>
 
-        <h3
-          style={{
-            fontWeight: view === "map" ? "bold" : "normal",
-            cursor: "pointer",
-            color: view == "map"  && "#81A094"
-          }}
-          onClick={() => setView("map")}
-        >
-          Map View
-        </h3>
+        <AttentionSeeker effect="tada">
+          <h3
+            style={{
+              fontWeight: view === "map" ? "bold" : "normal",
+              cursor: "pointer",
+              color: view == "map"  && "#81A094"
+            }}
+            onClick={() => setView("map")}
+            >
+            Map View
+          </h3>
+        </AttentionSeeker>
+
       </div>
 
       {view === "post" ? (

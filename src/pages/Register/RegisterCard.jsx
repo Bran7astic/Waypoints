@@ -8,6 +8,7 @@ export default function RegisterCard() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [submitted, setSubmitted] = useState(false)
   const { session } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -22,10 +23,8 @@ export default function RegisterCard() {
       });
 
       if (error) {console.error(error)}
+      setSubmitted(true)
 
-      //   console.log("Data:", data);
-      //   console.log("Error:", error);
-      //   console.log("User ID:", data?.user?.id);
     };
 
     registerUser();
@@ -70,6 +69,9 @@ export default function RegisterCard() {
       />
 
       <button onClick={handleSubmit}>Submit</button>
+      {submitted && (
+        <p>Please confirm your email {email} to log in.</p>
+      )}
       <p>
         Already have an account? <br />
         <Link className="loginLink" to="/login">Log In</Link>

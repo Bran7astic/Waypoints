@@ -68,7 +68,7 @@ The following **additional** features are implemented:
 
 ## Video Walkthrough
 
-Here's a walkthrough of implemented user stories:
+Here's a walkthrough of Waypoints:
 
 <img src='./public/preview-min.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 

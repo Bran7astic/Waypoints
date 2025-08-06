@@ -105,7 +105,7 @@ export default function PostCard({
         </div>
 
         <div style={{ display: "flex", alignItems: "center", gap: "0.2em" }}>
-          <Favorite onClick={() => setLikesState(prev => prev+1)}/>
+          <Favorite style={{cursor: "pointer"}} onClick={() => setLikesState(prev => prev+1)}/>
           <p>{likesState}</p>
         </div>
       </div>

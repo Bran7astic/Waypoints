@@ -68,7 +68,6 @@ export default function MapView({posts}) {
         backgroundColor: "#ffdcdc",
       }}
     >
-        <Fade direction="up" triggerOnce>
 
       <h2>Map View</h2>
 
@@ -88,7 +87,6 @@ export default function MapView({posts}) {
           className="map-container"
         />
       </div>
-          </Fade>
     </div>
   );
 }

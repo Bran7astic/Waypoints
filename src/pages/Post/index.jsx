@@ -1,3 +1,4 @@
+import { Fade } from "react-awesome-reveal";
 import PostForm from "./PostForm";
 
 export default function Post() {
@@ -12,7 +13,9 @@ export default function Post() {
     >
       <div>
         <h1>Post</h1>
-        <PostForm />
+        <Fade direction="up" triggerOnce>
+          <PostForm />
+        </Fade>
       </div>
     </div>
   );

@@ -5,7 +5,7 @@ import "@/styles/Feed.css";
 import { CircularProgress } from "@mui/material";
 import PostView from "./PostView";
 import MapView from "./MapView";
-import { AttentionSeeker } from "react-awesome-reveal";
+import { AttentionSeeker, Fade } from "react-awesome-reveal";
 
 export default function Feed() {
   const [posts, setPosts] = useState([]);
@@ -132,7 +132,9 @@ export default function Feed() {
           <PostView posts={posts}/>
         </>
       ) : (
-        <MapView posts={posts}/>
+        <Fade direction="up" triggerOnce duration={2000}>
+          <MapView posts={posts}/>
+        </Fade>
       )}
     </div>
   );

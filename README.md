@@ -68,7 +68,7 @@ The following **additional** features are implemented:
 
 ## Video Walkthrough
 
-Here's a walkthrough of implemented user stories:
+Here's a walkthrough of Waypoints:
 
 <img src='./public/preview-min.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
@@ -78,10 +78,6 @@ GIF created with ScreenToGif for Windows
 [Kap](https://getkap.co/) for macOS
 [ScreenToGif](https://www.screentogif.com/) for Windows
 [peek](https://github.com/phw/peek) for Linux. -->
-
-## Notes
-
-Describe any challenges encountered while building the app.
 
 ## License
 
